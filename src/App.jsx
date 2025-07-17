@@ -3,6 +3,7 @@ import { useDebounce } from 'react-use';
 import Search from './components/Search';
 import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
+import { updateSearchCount } from './appwrite';
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3'; 
@@ -21,6 +22,7 @@ const App = () => {
   const [movies, setMovies] = useState([]); 
   const [loading, setLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [screen, setScreen] = useState('')
 
   useDebounce(() => {
     setDebouncedSearchTerm(searchTerm);
@@ -37,7 +39,7 @@ const App = () => {
         query.toLowerCase().includes(word)
       )
     ) {
-      setErrorMessage('Serch term contains banned keywords');
+      setErrorMessage('Search term contains banned keywords');
       setMovies([]);
       return;
     }
@@ -64,6 +66,8 @@ const App = () => {
       }
 
       setMovies(data.results || []);
+
+      updateSearchCount();
 
     }catch (error) {
       console.error(`Error fetching movies, Please try again later`);
@@ -98,6 +102,15 @@ const App = () => {
             <span className="notifications">
               <img src="/imgs/notification.svg" alt="" />
             </span>
+
+            <div className="toggleMenu">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
           </div>
         </header>
 

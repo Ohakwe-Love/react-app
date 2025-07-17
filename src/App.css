@@ -121,6 +121,7 @@ header nav ul li a:hover::before {
 
 .header-actions {
   display: flex;
+  gap: 10px;
   align-items: center;
 }
 
@@ -138,6 +139,18 @@ header nav ul li a:hover::before {
 
 .header-actions .notifications img {
   width: 50%;
+}
+
+.header-actions .toggleMenu {
+  width: 30px;
+  height: 30px;
+  fill: var(--white-color);
+  cursor: pointer;
+  display: none;
+}
+
+.header-actions .toggleMenu svg {
+  stroke: var(--white-color);
 }
 
 .heroContainer .hero {
