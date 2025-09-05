@@ -17,11 +17,14 @@ const API_OPTIONS = {
 }
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [movies, setMovies] = useState([]); 
-  const [loading, setLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [movies, setMovies] = useState([]); 
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  const [loading, setLoading] = useState(false);
+  
   const [trendingMovies, setTrendingMovies] = useState('');
   // const [screen, setScreen] = useState('')
 
